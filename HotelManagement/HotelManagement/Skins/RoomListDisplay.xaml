@@ -1,0 +1,79 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:HotelManagement.Reception.Converters"
+    xmlns:roomTypes="clr-namespace:HotelManagement.Entities.Rooms.RoomTypes;assembly=HotelManagement.Entities"
+    xmlns:rooms="clr-namespace:HotelManagement.Entities.Rooms;assembly=HotelManagement.Entities">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ListBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+
+    </ResourceDictionary.MergedDictionaries>
+    <converters:RoomStateToGuestVisabilityConverter x:Key="RoomStateToGuestVisability" />
+    <DataTemplate x:Key="RoomListDisplay" DataType="{x:Type rooms:Room}">
+        <StackPanel>
+            <WrapPanel>
+                <TextBlock Text="Room Number: " />
+                <TextBlock Text="{Binding RoomNumber}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Room Quality: " />
+                <TextBlock Text="{Binding Quality}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="State: " />
+                <TextBlock Text="{Binding State}" />
+            </WrapPanel>
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type roomTypes:SingleRoom}">
+        <StackPanel>
+            <WrapPanel>
+                <TextBlock Text="Room Number: " />
+                <TextBlock Text="{Binding RoomNumber}" />
+            </WrapPanel>
+            <TextBlock Text="Type: Single Room" />
+            <WrapPanel>
+                <TextBlock Text="Room Quality: " />
+                <TextBlock Text="{Binding Quality}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="State: " />
+                <TextBlock Text="{Binding State}" />
+            </WrapPanel>
+            <WrapPanel Visibility="{Binding State, Converter={StaticResource RoomStateToGuestVisability}}">
+                <TextBlock Text="Guest: " />
+                <TextBlock Text="{Binding Guest.FirstName}" />
+                <TextBlock Text=", " />
+                <TextBlock Text="{Binding Guest.PhoneNumber}" />
+            </WrapPanel>
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type roomTypes:DoubleRoom}">
+        <StackPanel>
+            <WrapPanel>
+                <TextBlock Text="Room Number: " />
+                <TextBlock Text="{Binding RoomNumber}" />
+            </WrapPanel>
+
+            <TextBlock Text="Type: Double Room" />
+            <WrapPanel>
+                <TextBlock Text="Room Quality: " />
+                <TextBlock Text="{Binding Quality}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="State: " />
+                <TextBlock Text="{Binding State}" />
+            </WrapPanel>
+            <WrapPanel Visibility="{Binding State, Converter={StaticResource RoomStateToGuestVisability}}">
+                <TextBlock Text="Guest: " />
+                <TextBlock Text="{Binding Guest.FirstName}" />
+                <TextBlock Text=", " />
+                <TextBlock Text="{Binding Guest.PhoneNumber}" />
+            </WrapPanel>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>

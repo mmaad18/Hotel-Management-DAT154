@@ -1,0 +1,112 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:guests1="clr-namespace:HotelManagement.Entities.Persons.Guests;assembly=HotelManagement.Entities"
+    xmlns:housekeeping="clr-namespace:HotelManagement.Entities.Persons.Employees.Housekeeping;assembly=HotelManagement.Entities"
+    xmlns:persons="clr-namespace:HotelManagement.Entities.Persons;assembly=HotelManagement.Entities"
+    xmlns:receptionists="clr-namespace:HotelManagement.Entities.Persons.Employees.Receptionists;assembly=HotelManagement.Entities">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ListBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+
+    </ResourceDictionary.MergedDictionaries>
+    <DataTemplate x:Key="PersonDisplay" DataType="{x:Type persons:Person}">
+        <WrapPanel>
+            <TextBlock Text="{Binding FullName}" />
+        </WrapPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="SelectedPersonDisplay">
+        <StackPanel>
+            <WrapPanel>
+                <TextBlock Text="Name: " />
+                <TextBlock Text="{Binding FullName}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Phone: " />
+                <TextBlock Text="{Binding PhoneNumber}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Date of Birth: " />
+                <TextBlock Text="{Binding DateOfBirth}" />
+            </WrapPanel>
+
+
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type persons:Employee}">
+        <StackPanel>
+            <WrapPanel>
+                <TextBlock Text="Name: " />
+                <TextBlock Text="{Binding FullName}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Phone: " />
+                <TextBlock Text="{Binding PhoneNumber}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Date of Birth: " />
+                <TextBlock Text="{Binding DateOfBirth}" />
+            </WrapPanel>
+
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type receptionists:Receptionist}">
+        <StackPanel>
+            <WrapPanel>
+                <TextBlock Text="Name: " />
+                <TextBlock Text="{Binding FullName}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Phone: " />
+                <TextBlock Text="{Binding PhoneNumber}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Date of Birth: " />
+                <TextBlock Text="{Binding DateOfBirth}" />
+            </WrapPanel>
+
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type housekeeping:Housekeeper}">
+        <StackPanel>
+            <WrapPanel>
+                <TextBlock Text="Name: " />
+                <TextBlock Text="{Binding FullName}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Phone: " />
+                <TextBlock Text="{Binding PhoneNumber}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Date of Birth: " />
+                <TextBlock Text="{Binding DateOfBirth}" />
+            </WrapPanel>
+
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type guests1:Guest}">
+        <StackPanel>
+            <WrapPanel>
+                <TextBlock Text="Name: " />
+                <TextBlock Text="{Binding FullName}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Phone: " />
+                <TextBlock Text="{Binding PhoneNumber}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Date of Birth: " />
+                <TextBlock Text="{Binding DateOfBirth}" />
+            </WrapPanel>
+
+
+
+        </StackPanel>
+    </DataTemplate>
+
+</ResourceDictionary>

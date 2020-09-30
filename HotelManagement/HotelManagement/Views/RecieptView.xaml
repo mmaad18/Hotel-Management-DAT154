@@ -1,0 +1,43 @@
+﻿<UserControl
+    x:Class="HotelManagement.Reception.Views.RecieptView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:RecieptViews="clr-namespace:HotelManagement.Reception.Views.RecieptViews"
+    xmlns:bills="clr-namespace:HotelManagement.Reception.Views.Bills"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:HotelManagement.Reception.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:personViews="clr-namespace:HotelManagement.Reception.Views.PersonViews"
+    d:DesignHeight="300"
+    d:DesignWidth="300"
+    DataContext="{Binding Reciept, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <RecieptViews:RecieptSearchView
+            x:Name="RecieptSearchView"
+            Grid.RowSpan="2"
+            Grid.Column="0"
+            DataContext="{Binding RecieptSearchViewModel}" />
+        <DockPanel
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Grid.Column="1">
+            <!--<personViews:PersonDisplayView DockPanel.Dock="Top" DataContext="{Binding ElementName=RecieptSearchView, Path=DataContext.Guest, UpdateSourceTrigger=PropertyChanged}"></personViews:PersonDisplayView>-->
+            <StackPanel DockPanel.Dock="Bottom">
+                <Button Command="{Binding SettleRecieptCommand}" Content="Settle Reciept" />
+                <Button Command="{Binding AddBillCommand}" Content="Add Bill" />
+            </StackPanel>
+            <bills:DisplayBillsView DataContext="{Binding ElementName=RecieptSearchView, Path=DataContext.SelectedRecieptBills, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" />
+        </DockPanel>
+    </Grid>
+</UserControl>
+

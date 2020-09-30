@@ -1,0 +1,115 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:billTypes="clr-namespace:HotelManagement.Entities.Bills.BillTypes;assembly=HotelManagement.Entities"
+    xmlns:converters="clr-namespace:HotelManagement.Reception.Converters"
+    xmlns:janitors="clr-namespace:HotelManagement.Entities.Persons.Employees.Janitors;assembly=HotelManagement.Entities"
+    xmlns:local="clr-namespace:HotelManagement.Reception.Skins">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ListBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <converters:SettledToVisabilityConverter x:Key="DatetimeToVisabilityConverter" />
+
+    <DataTemplate DataType="{x:Type billTypes:CleaningBill}">
+        <StackPanel>
+            <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Cleaning Bill" />
+            <WrapPanel>
+                <TextBlock Text="Amount: " />
+                <TextBlock Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="State: " />
+                <TextBlock Text="{Binding State, UpdateSourceTrigger=PropertyChanged}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Ordered: " />
+                <TextBlock Text="{Binding OrderedDate, UpdateSourceTrigger=PropertyChanged}" />
+            </WrapPanel>
+            <WrapPanel Visibility="{Binding State, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DatetimeToVisabilityConverter}}">
+                <TextBlock Text="Payed: " />
+                <TextBlock Text="{Binding PayedDate, UpdateSourceTrigger=PropertyChanged}" />
+            </WrapPanel>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type billTypes:FoodBill}">
+        <StackPanel>
+            <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Food Bill" />
+            <WrapPanel>
+                <TextBlock Text="Note: " />
+                <TextBlock Text="{Binding DishDishName, UpdateSourceTrigger=PropertyChanged}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Amount: " />
+                <TextBlock Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="State: " />
+                <TextBlock Text="{Binding State, UpdateSourceTrigger=PropertyChanged}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Ordered: " />
+                <TextBlock Text="{Binding OrderedDate, UpdateSourceTrigger=PropertyChanged}" />
+            </WrapPanel>
+            <WrapPanel Visibility="{Binding State, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DatetimeToVisabilityConverter}}">
+                <TextBlock Text="Payed: " />
+                <TextBlock Text="{Binding PayedDate, UpdateSourceTrigger=PropertyChanged}" />
+            </WrapPanel>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type billTypes:MiscBill}">
+        <StackPanel>
+            <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Misc Bill" />
+            <WrapPanel>
+                <TextBlock Text="Item: " />
+                <TextBlock Text="{Binding ItemName, UpdateSourceTrigger=PropertyChanged}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Amount: " />
+                <TextBlock Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="State: " />
+                <TextBlock Text="{Binding State, UpdateSourceTrigger=PropertyChanged}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Ordered: " />
+                <TextBlock Text="{Binding OrderedDate, UpdateSourceTrigger=PropertyChanged}" />
+            </WrapPanel>
+            <WrapPanel Visibility="{Binding State, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DatetimeToVisabilityConverter}}">
+                <TextBlock Text="Payed: " />
+                <TextBlock Text="{Binding PayedDate, UpdateSourceTrigger=PropertyChanged}" />
+            </WrapPanel>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type billTypes:RoomBill}">
+        <StackPanel>
+            <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Room Bill" />
+            <WrapPanel>
+                <TextBlock Text="Amount: " />
+                <TextBlock Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="State: " />
+                <TextBlock Text="{Binding State, UpdateSourceTrigger=PropertyChanged}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Ordered: " />
+                <TextBlock Text="{Binding OrderedDate, UpdateSourceTrigger=PropertyChanged}" />
+            </WrapPanel>
+            <WrapPanel Visibility="{Binding State, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DatetimeToVisabilityConverter}}">
+                <TextBlock Text="Payed: " />
+                <TextBlock Text="{Binding PayedDate, UpdateSourceTrigger=PropertyChanged}" />
+            </WrapPanel>
+        </StackPanel>
+    </DataTemplate>
+
+
+
+</ResourceDictionary>

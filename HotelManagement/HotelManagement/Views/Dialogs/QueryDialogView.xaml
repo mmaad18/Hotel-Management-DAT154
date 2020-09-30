@@ -1,0 +1,51 @@
+﻿<UserControl
+    x:Class="HotelManagement.Reception.Views.Dialogs.QueryDialogView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dialogs="clr-namespace:HotelManagement.Reception.ViewModel.Dialogs"
+    xmlns:local="clr-namespace:HotelManagement.Reception.Views.Dialogs"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    d:DataContext="{d:DesignInstance dialogs:QueryDialogViewModel,
+                                     IsDesignTimeCreatable=True}"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--  note you only need bring in these extra resource dictionaries when using non-default styles, so only bring them into your controls where the default style is not what you want  -->
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+
+    <StackPanel Margin="16">
+        <TextBlock Text="{Binding Info}" />
+        <TextBox
+            x:Name="InputText"
+            Margin="0,8,0,0"
+            HorizontalAlignment="Stretch" />
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button
+                Margin="0,8,8,0"
+                Command="materialDesign:DialogHost.CloseDialogCommand"
+                CommandParameter="{Binding Text, ElementName=InputText}"
+                Content="{Binding AcceptButtonText}"
+                IsDefault="True"
+                Style="{StaticResource MaterialDesignFlatButton}" />
+            <Button
+                Margin="0,8,8,0"
+                Command="materialDesign:DialogHost.CloseDialogCommand"
+                Content="{Binding CancelButtonText}"
+                IsCancel="True"
+                Style="{StaticResource MaterialDesignFlatButton}">
+                <Button.CommandParameter>
+                    <system:Boolean>False</system:Boolean>
+                </Button.CommandParameter>
+
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

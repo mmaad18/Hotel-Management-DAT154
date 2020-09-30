@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5022C902-6373-4EDA-9E92-FA96AA999F88}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HotelManagement.DAL</RootNamespace>
+    <AssemblyName>HotelManagement.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HotelManagementContext.cs" />
+    <Compile Include="HotelManagementDBInitializer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorys\Bills\BillRepository.cs" />
+    <Compile Include="Repositorys\Bills\IBillRepository.cs" />
+    <Compile Include="Repositorys\Employees\EmployeeRepository.cs" />
+    <Compile Include="Repositorys\Employees\IEmployeeRepository.cs" />
+    <Compile Include="Repositorys\General\HotelRepository.cs" />
+    <Compile Include="Repositorys\General\IHotelRepository.cs" />
+    <Compile Include="Repositorys\Guests\GuestRepository.cs" />
+    <Compile Include="Repositorys\Guests\IGuestRepository.cs" />
+    <Compile Include="Repositorys\Reciepts\IRecieptReposetory.cs" />
+    <Compile Include="Repositorys\Reciepts\ReciptReposetory.cs" />
+    <Compile Include="Repositorys\RoomServices\IRoomServiceRepository.cs" />
+    <Compile Include="Repositorys\RoomServices\RoomServiceRepository.cs" />
+    <Compile Include="Repositorys\Rooms\IRoomRepository.cs" />
+    <Compile Include="Repositorys\Rooms\RoomRepository.cs" />
+    <Compile Include="Repositorys\Shared\EFReposetory.cs" />
+    <Compile Include="Repositorys\Shared\IRepository.cs" />
+    <Compile Include="Repositorys\Shared\Password\SecurePasswordHasher.cs" />
+    <Compile Include="Repositorys\Validation\EmployeeValidationRepository.cs" />
+    <Compile Include="Repositorys\Validation\GuestValidationRepository.cs" />
+    <Compile Include="Repositorys\Validation\IValidationRepository.cs" />
+    <Compile Include="TestRepos.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HotelManagement.Entities\HotelManagement.Entities.csproj">
+      <Project>{dbbab203-3067-48f5-9f39-b02a55021882}</Project>
+      <Name>HotelManagement.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

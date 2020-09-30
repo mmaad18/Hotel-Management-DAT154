@@ -1,0 +1,86 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:bill="clr-namespace:HotelManagement.Entities.Bills;assembly=HotelManagement.Entities"
+    xmlns:billTypes="clr-namespace:HotelManagement.Entities.Bills.BillTypes;assembly=HotelManagement.Entities"
+    xmlns:local="clr-namespace:HotelManagement.Reception.Skins"
+    xmlns:roomViewModels="clr-namespace:HotelManagement.Reception.ViewModel.ViewModels.RoomViewModels"
+    xmlns:roomViews="clr-namespace:HotelManagement.Reception.Views.RoomViews">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ListBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate DataType="{x:Type bill:Bill}">
+        <StackPanel>
+            <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Cleaning Bill" />
+            <Separator Margin="0,5,0,10" />
+            <WrapPanel>
+                <TextBlock Text="Amount: " />
+                <TextBox MinWidth="70" Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}" />
+            </WrapPanel>
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type billTypes:CleaningBill}">
+        <StackPanel>
+            <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Cleaning Bill" />
+            <Separator Margin="0,5,0,10" />
+            <WrapPanel>
+                <TextBlock Text="Amount: " />
+                <TextBox MinWidth="70" Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}" />
+            </WrapPanel>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type billTypes:FoodBill}">
+        <StackPanel>
+            <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Food Bill" />
+            <Separator Margin="0,5,0,10" />
+            <WrapPanel>
+                <TextBlock Text="Dish: " />
+                <TextBox MinWidth="70" Text="{Binding DishDishName, UpdateSourceTrigger=PropertyChanged}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Amount: " />
+                <TextBox MinWidth="70" Text="{Binding Amount}" />
+            </WrapPanel>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type billTypes:MiscBill}">
+        <StackPanel>
+            <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Misc Bill" />
+            <Separator Margin="0,5,0,10" />
+            <WrapPanel>
+                <TextBlock Text="Item: " />
+                <TextBox MinWidth="70" Text="{Binding ItemName}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Amount: " />
+                <TextBox MinWidth="70" Text="{Binding Amount}" />
+            </WrapPanel>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type billTypes:RoomBill}">
+        <DockPanel Margin="10">
+            <TextBlock
+                DockPanel.Dock="Top"
+                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                Text="Room Bill" />
+            <Separator Margin="0,5,0,10" DockPanel.Dock="Top" />
+            <WrapPanel DockPanel.Dock="Top">
+                <TextBlock Text="Amount: " />
+                <TextBox MinWidth="70" Text="{Binding Amount}" />
+            </WrapPanel>
+            <roomViews:RoomSearchView
+                MinHeight="200"
+                DataContext="{Binding Reciept.CreateBillViewModelContext.RoomSearchViewModel, Source={StaticResource Locator}}"
+                DockPanel.Dock="Top" />
+        </DockPanel>
+    </DataTemplate>
+</ResourceDictionary>

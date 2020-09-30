@@ -1,0 +1,38 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:HotelManagement.Reception.Converters"
+    xmlns:local="clr-namespace:HotelManagement.Reception.Skins"
+    xmlns:reciepts="clr-namespace:HotelManagement.Entities.Reciepts;assembly=HotelManagement.Entities">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ListBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+
+    </ResourceDictionary.MergedDictionaries>
+    <converters:RoomStateToGuestVisabilityConverter x:Key="RoomStateToGuestVisability" />
+    <DataTemplate x:Key="RecieptListDisplay" DataType="{x:Type reciepts:Reciept}">
+        <StackPanel>
+            <WrapPanel>
+                <TextBlock Text="Guest Name: " />
+                <TextBlock Text="{Binding Guest.FullName}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Stay Quality: " />
+                <TextBlock Text="{Binding RoomQuality}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Room Type: " />
+                <TextBlock Text="{Binding RoomType}" />
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="State: " />
+                <TextBlock Text="{Binding State}" />
+            </WrapPanel>
+
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>

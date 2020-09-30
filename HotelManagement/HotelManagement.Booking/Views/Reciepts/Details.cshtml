@@ -1,0 +1,78 @@
+﻿@using HotelManagement.Entities.Reciepts.States
+@model HotelManagement.Entities.Reciepts.Reciept
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Reciept</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Guest.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Guest.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StayedFromDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StayedFromDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StayedToDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StayedToDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomQuality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomQuality)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomType)
+        </dd>
+        <dt>
+           Room Number
+        </dt>
+
+        <dd>
+            @ViewBag.Room.RoomNumber
+
+        </dd>
+
+        @{
+        if (Model.State.GetType() == typeof(SettledReciept))
+        {
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SettledDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SettledDate)
+            </dd>
+
+    }
+        }
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

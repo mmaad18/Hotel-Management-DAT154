@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<h2>Welcome to our Hotel</h2>
+@{
+    if (Request.Cookies["Auth"] != null)
+    {
+        if (Request.Cookies["Auth"].Value.ToString() == "1")
+        {
+            <h3>Book a new Room</h3>
+            @Html.ActionLink("Book a Room", "Create", "Reciepts", null, new {@class = "btn btn-primary btn-large"})
+            <p></p>
+            <h3>View previous Bookings</h3>
+            @Html.ActionLink("Previous Bookings", "Index", "Reciepts", null, new {@class = "btn btn-primary btn-large"})
+
+
+        }
+    }
+    else
+    {
+        
+        <p>Login or Create a User to book a room</p>
+    }
+}
+
